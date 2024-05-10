@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI</title>
+</head>
+<style>
+   body {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 50px;
+}
+#cal{
+    background-color: #7fffd4;
+    border:solid;
+    display:inline-block;
+    text-align: center;
+}
+
+h1 {
+    color: purple;
+    text-shadow: plum 4px 2px 2px ;
+}
+
+div {
+    color: purple;
+}
+
+input {
+    padding: 20px;
+    font-size: 20px;
+    margin: 10px;
+    border: gray 3px solid;
+}
+
+label {
+    color: purple;
+}
+
+input:focus {
+    outline: none;
+    border: purple 3px solid;
+    background-color: plum;
+    color: black;
+} 
+</style>
+
+<body>
+    <div id="cal">
+    <label for="weight">Weight:</label>
+    <input type="number" id="x" placeholder="Weight in kg"><br>
+    <label for="height">Height:</label>
+    <input type="number" id="y" placeholder="Height in cm"><br>
+    <button onclick="BMI()">Submit</button>
+    </div>
+    <div id="Result"></div>
+    <div id="Remarks"></div>
+    <script>
+        function BMI() {
+            var a = parseFloat(document.getElementById("x").value)
+            var b = parseFloat(document.getElementById("y").value) / 100
+            var c = Math.round(a / (Math.pow(b, 2)))
+            document.getElementById("Result").innerHTML = "Your BMI is " + c
+            if (c < 18.5) {
+                document.getElementById("Remarks").innerHTML = ("You're Underweight")
+            }
+            else if (c > 18.5 && c < 24.9) {
+                document.getElementById("Remarks").innerHTML = ("You're Healthy")
+            }
+            else if (c > 25 && c < 29.9) {
+                document.getElementById("Remarks").innerHTML = ("You're Overweight")
+            }
+            else if (c > 29.9) {
+                document.getElementById("Remarks").innerHTML = ("You're Obese")
+            }
+        }
+
+    </script>
+</body>
+
+</html>
